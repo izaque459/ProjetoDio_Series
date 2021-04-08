@@ -9,12 +9,12 @@ namespace DIO_Series
         private List<Serie> listaSerie = new List<Serie>();
         public void Atualiza(int id, Serie entidade)
         {
-            listaSerie(id) = entidade ;
+            listaSerie[id] = entidade ;
         }
 
         public void Exclui(int id)
         {
-            listaSerie(id).Excluir();
+            listaSerie[id].Excluir();
         }
 
         public void Insere(Serie entidade)
@@ -34,7 +34,7 @@ namespace DIO_Series
 
         public Serie RetornaPorID(int id)
         {
-            return listaSerie(id);
+            return listaSerie[id];
         }
     }
 }

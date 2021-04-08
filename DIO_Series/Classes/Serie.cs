@@ -1,3 +1,5 @@
+using System;
+
 namespace DIO_Series
 {
     public class Serie : EntidadeBase
@@ -27,6 +29,7 @@ namespace DIO_Series
             retorno+="Titulo: " + this.Titulo + Environment.NewLine;
             retorno+="Descricao: " + this.Descricao + Environment.NewLine;
             retorno+="Ano de inicio: " + this.Ano + Environment.NewLine;
+            retorno+="Excluido: "+this.Excluido ;
             return retorno;
         }
 
@@ -38,6 +41,11 @@ namespace DIO_Series
         public int RetornaID()
         {
             return this.Id;
+        }
+
+        public bool RetornaExcluido()
+        {
+            return this.Excluido;
         }
 
         public void Excluir()
