@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DIO_Series
 {
@@ -11,6 +12,7 @@ namespace DIO_Series
 
         private bool Excluido{get;set;}
 
+        List<Temporada> listaTemporadas = new List<Temporada>();
          public Serie(int id, Genero genero, string titulo, string descricao, int ano)
         {
             this.Id = id;
@@ -51,6 +53,21 @@ namespace DIO_Series
         public void Excluir()
         {
             this.Excluido = true;
+        }
+
+        public void AdicionaTemporada(Temporada temporada)
+        {
+            listaTemporadas.Add(temporada);
+        }
+
+        public string RetornaTemporadas()
+        {
+            string retorno = null;
+            foreach(Temporada exibicao in listaTemporadas)
+            {
+                retorno+= exibicao.ToString()+"\n";
+            }
+            return retorno;
         }
     }
 }
