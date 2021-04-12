@@ -32,7 +32,6 @@ namespace DIO_Series
 					case "C":
 						Console.Clear();
 						break;
-
 					default:
 						throw new ArgumentOutOfRangeException();
 				}
@@ -41,7 +40,7 @@ namespace DIO_Series
 			}
 
 			Console.WriteLine("Obrigado por utilizar nossos serviços.");
-			Console.ReadLine();
+			
         }
 
          private static void ExcluirSerie()
@@ -104,11 +103,20 @@ namespace DIO_Series
 				return;
 			}
 
+			Temporada temporada;
 			foreach (var serie in lista)
 			{
                 var excluido = serie.RetornaExcluido();
                 
-				Console.WriteLine("#ID {0}: - {1} {2}", serie.RetornaID(), serie.RetornaTitulo(), (excluido ? "*Excluído*" : ""));
+				Console.WriteLine("#ID {0}: - {1} {2} ", serie.RetornaID(), serie.RetornaTitulo(), (excluido ? "*Excluído*" : ""));
+				for(int i=0; i<serie.NTemporadas(); i++)
+				{
+					serie.RetornaTemporadas(i, out temporada);
+					if(temporada.Degustacao)
+						Console.WriteLine("Temporada #{0} Episodios {1} com degustação ",i+1,temporada.Episodios);
+					else
+						Console.WriteLine("Temporada #{0} Episodios {1}",i+1,temporada.Episodios);
+				}
 			}
 		}
 
@@ -137,6 +145,29 @@ namespace DIO_Series
 										titulo: entradaTitulo,
 										ano: entradaAno,
 										descricao: entradaDescricao);
+			Console.Write("Digite o numero de Temporadas: ");
+			int entradaTemporadas = int.Parse(Console.ReadLine());
+			int entradaNEpisodios = 0;
+			int entradaDegustacao = 2;
+			bool entradaDegustacaoLogica = false;
+			Console.WriteLine("Para cada temporada digite o numero de episodios e  se em alguma há degustação do primeiro episodio.");
+			for(int i=0; i<entradaTemporadas; i++)
+			{
+				Console.WriteLine("Temporada #{0}",i+1);
+				Console.Write("Numeros de episodios: ");
+				entradaNEpisodios = int.Parse(Console.ReadLine());
+				Console.Write("Digite 1 se houver degustacao ou 2 caso não haja: ");
+				entradaDegustacao = int.Parse(Console.ReadLine());
+				if(entradaDegustacao==1)
+					entradaDegustacaoLogica = true;
+				else
+					entradaDegustacaoLogica = false;
+
+				Temporada novaTemporada = new Temporada(entradaNEpisodios,entradaDegustacaoLogica);
+
+				novaSerie.AdicionaTemporada(novaTemporada);
+				
+			}
 
 			repositorio.Insere(novaSerie);
 		}

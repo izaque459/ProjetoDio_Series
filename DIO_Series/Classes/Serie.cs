@@ -60,14 +60,14 @@ namespace DIO_Series
             listaTemporadas.Add(temporada);
         }
 
-        public string RetornaTemporadas()
+        public void RetornaTemporadas(int i,out Temporada exibicao)
         {
-            string retorno = null;
-            foreach(Temporada exibicao in listaTemporadas)
-            {
-                retorno+= exibicao.ToString()+"\n";
-            }
-            return retorno;
+            exibicao = listaTemporadas[i];
+        }
+
+        public int NTemporadas()
+        {
+            return listaTemporadas.Count;
         }
     }
 }

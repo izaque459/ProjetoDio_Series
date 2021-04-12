@@ -2,20 +2,24 @@ namespace DIO_Series
 {
     public struct Temporada
     {
-        private int NEpisodios;
-        private bool Degustacao;
+        private int _Episodios;
+        private bool _Degustacao;
         public Temporada(int nEpisodios, bool degustacao)
         {
-            this.NEpisodios = nEpisodios;
-            this.Degustacao = degustacao;
+            this._Episodios = nEpisodios;
+            this._Degustacao = degustacao;
         }
 
-        public override string ToString()
+        public int Episodios
         {
-            if(this.Degustacao)
-                return $"{NEpisodios} episodios com degustação do primeiro episodio.";
-            else
-                return $"{this.NEpisodios} com episodios.";
+            get {return _Episodios;}
+            set {_Episodios = value;}
+        }
+
+        public bool Degustacao
+        {
+            get {return _Degustacao;}
+            set {_Degustacao = value;}
         }
     }
 }
