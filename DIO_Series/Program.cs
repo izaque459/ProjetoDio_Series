@@ -45,6 +45,7 @@ namespace DIO_Series
 
          private static void ExcluirSerie()
 		{
+			Console.WriteLine("==>Excluir Serie:");
 			Console.Write("Digite o id da série: ");
 			int indiceSerie = int.Parse(Console.ReadLine());
 
@@ -53,6 +54,7 @@ namespace DIO_Series
 
         private static void VisualizarSerie()
 		{
+			Console.WriteLine("==>Visualizar Serie: ");
 			Console.Write("Digite o id da série: ");
 			int indiceSerie = int.Parse(Console.ReadLine());
 
@@ -74,6 +76,7 @@ namespace DIO_Series
 
         private static void AtualizarSerie()
 		{
+			Console.WriteLine("==>Atualizar Serie:");
 			Console.Write("Digite o id da série: ");
 			int indiceSerie = int.Parse(Console.ReadLine());
 
@@ -126,7 +129,7 @@ namespace DIO_Series
 
         private static void ListarSeries()
 		{
-			Console.WriteLine("Listar séries");
+			Console.WriteLine("==>Listar séries: ");
 
 			var lista = repositorio.Lista();
 
@@ -148,7 +151,7 @@ namespace DIO_Series
 
          private static void InserirSerie()
 		{
-			Console.WriteLine("Inserir nova série");
+			Console.WriteLine("==>Inserir nova série: ");
 
 			foreach (int i in Enum.GetValues(typeof(Genero)))
 			{
@@ -213,6 +216,9 @@ namespace DIO_Series
 			Console.WriteLine();
 
 			string opcaoUsuario = Console.ReadLine().ToUpper();
+			Console.WriteLine();
+
+			Console.WriteLine($"O usuario escolheu: {opcaoUsuario}.");
 			Console.WriteLine();
 			return opcaoUsuario;
 		}
